@@ -10,10 +10,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Puesto;
+import clases.Puesto;
 /**
  *
- * @author berliz
+ * @author Gustavo
  */
 public class sr_puesto extends HttpServlet {
 
@@ -26,11 +26,12 @@ public class sr_puesto extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     Puesto puesto;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -38,7 +39,7 @@ public class sr_puesto extends HttpServlet {
             out.println("<title>Servlet sr_puesto</title>");            
             out.println("</head>");
             out.println("<body>");
-            puesto = new Puesto(request.getParameter("txt_puesto"),Integer.valueOf(request.getParameter("txt_idpuesto")));
+            puesto = new Puesto(request.getParameter("txt_pue"),Integer.valueOf(request.getParameter("txt_id_pue")));
             //Agregar
             if("agregar".equals(request.getParameter("btn_agregar"))){
             if(puesto.crear()>0){
@@ -75,7 +76,7 @@ public class sr_puesto extends HttpServlet {
                 out.println("<a href='index.jsp'>Regresar...</a>");
             }
                 }
-
+            
             out.println("</body>");
             out.println("</html>");
         }
